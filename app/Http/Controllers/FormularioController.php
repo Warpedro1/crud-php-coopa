@@ -9,6 +9,7 @@ use Carbon\Carbon;
 
 class FormularioController extends Controller
 {
+    
     public function create()
     {
         return view('formulario.create');
@@ -16,6 +17,7 @@ class FormularioController extends Controller
 
     public function store(Request $request)
     {
+
         $validated = $request->validate([
             'nome' => 'required|string|max:255',
             'email' => 'required|email|max:255',
@@ -32,14 +34,17 @@ class FormularioController extends Controller
         return redirect()->route('formulario.show')->with('success', 'Cadastro realizado com sucesso!');
     }
 
+
     public function show()
     {
         $cadastros = Cadastro::all();
         return view('formulario.show', compact('cadastros'));
     }
 
+
     public function update(Request $request, $id)
     {
+
         $validated = $request->validate([
             'nome' => 'required|string|max:255',
             'email' => 'required|email|max:255',
@@ -50,6 +55,7 @@ class FormularioController extends Controller
             'profissao' => 'required|string|max:100',
             'salario' => 'required|numeric',
         ]);
+
 
         $cadastro = Cadastro::findOrFail($id);
 
@@ -64,8 +70,10 @@ class FormularioController extends Controller
         $historico->profissao = $cadastro->profissao;
         $historico->salario = $cadastro->salario;
         $historico->save();
+        
 
         $cadastro->update($validated);
+        
 
         return redirect()->route('formulario.show')->with('success', 'Cadastro atualizado com sucesso!');
     }

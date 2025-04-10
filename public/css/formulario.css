@@ -1,4 +1,4 @@
-
+/* Reset básico */
 * {
     margin: 0;
     padding: 0;
@@ -12,35 +12,42 @@ body {
     color: #333;
 }
 
-
-.wrapper {
+/* Container principal */
+.container {
     width: 95%;
     max-width: 1200px;
     margin: 2rem auto;
     padding: 0 15px;
 }
 
-
-.painel {
+/* Card */
+.card {
     background: white;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     margin-bottom: 2rem;
 }
 
-.painel-topo {
+.card-header {
     background: #757575;
     color: white;
     padding: 1rem;
     border-radius: 8px 8px 0 0;
 }
 
-.painel-conteudo {
+.card-body {
     padding: 1.5rem;
 }
 
+/* Títulos */
+h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
 
-.botao {
+/* Botões */
+.btn {
     display: inline-block;
     padding: 0.8rem 1.5rem;
     border-radius: 4px;
@@ -53,141 +60,161 @@ body {
     margin: 0.5rem 0;
 }
 
-.grupo-botoes {
+/* Grupo de botões */
+.button-group {
     display: flex;
     flex-direction: column;
     gap: 1rem;
     margin-top: 2rem;
 }
 
-.botao-primario {
+.btn-primary {
     background: #2196F3;
     color: white;
     font-weight: 500;
 }
 
-.botao-primario:hover {
+.btn-primary:hover {
     background: #1976D2;
     text-decoration: none;
 }
 
-.botao-secundario {
+.btn-secondary {
     background: #757575;
     color: white;
     font-weight: 500;
 }
 
-.botao-secundario:hover {
+.btn-secondary:hover {
     background: #616161;
     text-decoration: none;
 }
 
-.botao-sucesso {
+.btn-success {
     background: #4CAF50;
     color: white;
     font-weight: 500;
 }
 
-.botao-sucesso:hover {
+.btn-success:hover {
     background: #388E3C;
     text-decoration: none;
 }
 
+/* Links como botões */
+a.btn {
+    text-decoration: none;
+    display: inline-block;
+    color: white;
+}
 
-.tabela-container {
+a.btn:hover {
+    text-decoration: none;
+    color: white;
+}
+
+/* Container de botões no formulário */
+.form-buttons {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Responsividade para botões */
+@media (min-width: 768px) {
+    .form-buttons {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    .form-buttons .btn {
+        width: 48%;  /* deixa um pequeno espaço entre os botões */
+    }
+}
+
+/* Tabela */
+.table-container {
     overflow-x: auto;
     margin: 1rem 0;
     position: relative;
     z-index: 50;
 }
 
-.tabela {
+table {
     width: 100%;
     border-collapse: collapse;
     background: white;
 }
 
-.tabela-cabecalho {
+th {
     background: #333;
     color: white;
     padding: 1rem;
     text-align: left;
 }
 
-.tabela-celula {
+td {
     padding: 0.8rem;
     border-bottom: 1px solid #ddd;
 }
 
-.tabela-linha:nth-child(even) {
+tr:nth-child(even) {
     background: #f9f9f9;
 }
 
-.tabela-linha:hover {
+tr:hover {
     background: #f5f5f5;
 }
 
-.campo-editavel {
+/* Células editáveis */
+.editable {
     position: relative;
     cursor: pointer;
     padding: 0.8rem;
     transition: all 0.2s ease;
 }
 
-.campo-editavel:hover {
+.editable:hover {
     background: #e3f2fd;
 }
 
-.campo-editavel.editando {
+.editable.editing {
     background: #e3f2fd;
     outline: 2px solid #2196F3;
     outline-offset: -2px;
 }
 
-.campo-editavel.modificado {
+.editable.modified {
     background: #ffebee;
     border: 1px solid #ef5350;
 }
 
-.campo-grupo {
-    margin-bottom: 1.5rem;
-}
 
-.campo-grupo label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-    color: #333;
-}
-
-.campo-entrada {
+select {
     width: 100%;
-    padding: 0.8rem;
+    padding: 0.5rem;
     border: 1px solid #ddd;
     border-radius: 4px;
+    background: white;
     font-size: 1rem;
-    transition: all 0.3s ease;
 }
 
-.campo-entrada:focus {
-    outline: none;
-    border-color: #2196F3;
-    box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2);
-}
-
-.mensagem {
+/* Alertas */
+.alert {
     padding: 1rem;
     margin-bottom: 1rem;
     border-radius: 4px;
 }
 
-.mensagem-sucesso {
+.alert-success {
     background: #E8F5E9;
     color: #1B5E20;
     border: 1px solid #A5D6A7;
 }
 
-.barra-fixa {
+
+.fixed-bottom {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -198,13 +225,13 @@ body {
     z-index: 100;
 }
 
-.barra-fixa .wrapper {
+.fixed-bottom .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 15px;
 }
 
-.barra-fixa .botao {
+.fixed-bottom .btn {
     width: 100%;
     padding: 1rem;
     font-size: 1.1rem;
@@ -212,70 +239,33 @@ body {
 }
 
 
-.espaco-inferior {
+.bottom-spacing {
     height: 100px;
     margin-bottom: 20px;
 }
 
-.campo-erro {
-    border-color: #dc3545;
-    background-color: #fff8f8;
-}
-
-.campo-erro:focus {
-    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
-}
-
-.texto-erro {
-    color: #dc3545;
-    font-size: 0.875rem;
-    margin-top: 0.25rem;
-    animation: aparecer 0.3s ease-in;
-}
-
-@keyframes aparecer {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@media (min-width: 768px) {
-    .grupo-botoes {
-        flex-direction: row;
-        justify-content: space-between;
-    }
-    
-    .grupo-botoes .botao {
-        width: 48%;
-    }
-}
-
+/* Responsividade */
 @media (max-width: 768px) {
-    .wrapper {
+    .container {
         width: 100%;
         padding: 0 10px;
     }
     
-    .tabela-celula, 
-    .tabela-cabecalho {
+    td, th {
         padding: 0.5rem;
     }
     
-    .botao {
+    .btn {
         padding: 0.4rem 0.8rem;
         font-size: 0.9rem;
     }
     
-    .espaco-inferior {
+    .bottom-spacing {
         height: 120px;
     }
 }
 
+/* Inputs */
 input {
     width: 100%;
     padding: 0.5rem;
@@ -290,6 +280,7 @@ input:focus {
     box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2);
 }
 
+/* Links */
 a {
     color: #2196F3;
     text-decoration: none;
@@ -299,94 +290,109 @@ a:hover {
     text-decoration: underline;
 }
 
-.campo-editavel:hover {
+/* Estilo para células editáveis */
+.editable:hover {
     background-color: #f8f9fa;
     cursor: pointer;
 }
 
-.campo-editavel.editando {
+/* Estilo para células em edição */
+.editable.editing {
     background-color: #e9ecef;
     outline: 2px solid #007bff;
     outline-offset: -2px;
 }
 
-.campo-editavel.modificado {
+/* Estilo para células modificadas */
+.editable.modified {
     background-color: #fff0f0;
     border: 1px solid #dc3545;
 }
 
-.editando input, 
-.editando select {
+/* Estilo para inputs e selects durante edição */
+.editing input, 
+.editing select {
     width: 100%;
 }
 
-.botao-salvar-linha {
+/* Ocultar botão de salvar por padrão */
+.btn-save-row {
     display: inline-block;
 }
 
-.tabela-linha.editando .botao-salvar-linha {
+/* Mostrar botão de salvar durante edição */
+tr.editing .btn-save-row {
     display: inline-block;
 }
 
-.tabela-linha.editando .botao-editar-linha {
+/* Ocultar botão de editar durante edição */
+tr.editing .btn-edit-row {
     display: none;
 }
 
-.tabela thead.tabela-dark th {
+/* Cabeçalho da tabela */
+.table thead.table-dark th {
     background-color: #343a40;
     color: white;
 }
 
-.tabela-striped tbody tr:nth-of-type(odd) {
+/* Linhas zebradas mais suaves */
+.table-striped tbody tr:nth-of-type(odd) {
     background-color: rgba(0, 0, 0, 0.03);
 }
 
-.tabela-hover tbody tr:hover {
+/* Hover nas linhas da tabela */
+.table-hover tbody tr:hover {
     background-color: rgba(0, 0, 0, 0.075);
 }
 
-.botao-editar-linha {
+/* Botões de ação */
+.btn-edit-row {
     background-color: #ffc107;
     border-color: #ffc107;
 }
 
-.botao-salvar-linha {
+.btn-save-row {
     background-color: #28a745;
     border-color: #28a745;
 }
 
-.painel {
+/* Card do formulário */
+.card {
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.painel-topo {
+.card-header {
     border-radius: 8px 8px 0 0 !important;
 }
 
-.mensagem-sucesso {
+/* Alertas */
+.alert-success {
     background-color: #d4edda;
     border-color: #c3e6cb;
     color: #155724;
 }
 
+/* Botão fixo no final da página */
 .position-fixed {
     box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
 }
 
-.campo-grupo {
+/* Grupos de formulário */
+.form-group {
     margin-bottom: 1.5rem;
 }
 
-.campo-grupo label {
+.form-group label {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: 500;
     color: #333;
 }
 
-.campo-grupo input,
-.campo-grupo select {
+.form-group input,
+.form-group select {
     width: 100%;
     padding: 0.8rem;
     border: 1px solid #ddd;
@@ -395,14 +401,14 @@ a:hover {
     transition: all 0.3s ease;
 }
 
-.campo-grupo input:focus,
-.campo-grupo select:focus {
+.form-group input:focus,
+.form-group select:focus {
     outline: none;
     border-color: #2196F3;
     box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2);
 }
 
-.campo-grupo select {
+.form-group select {
     appearance: none;
     background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
     background-repeat: no-repeat;
@@ -411,7 +417,8 @@ a:hover {
     padding-right: 2.5rem;
 }
 
-.mensagem-erro {
+/* Alerta de erro */
+.alert-danger {
     background-color: #fff3f3;
     border: 1px solid #dc3545;
     color: #dc3545;
@@ -420,19 +427,20 @@ a:hover {
     border-radius: 4px;
 }
 
-.mensagem-erro ul {
+.alert-danger ul {
     margin: 0;
     padding-left: 1.5rem;
 }
 
-.mensagem-erro li {
+.alert-danger li {
     margin-bottom: 0.3rem;
 }
 
-.mensagem-erro li:last-child {
+.alert-danger li:last-child {
     margin-bottom: 0;
 }
 
+/* Campo inválido */
 .invalid {
     background-color: #fff3f3 !important;
     border: 1px solid #dc3545 !important;
@@ -453,12 +461,13 @@ a:hover {
     z-index: 1;
 }
 
-.campo-campo {
+/* Campos de formulário com validação */
+.form-field {
     position: relative;
     margin-bottom: 1.5rem;
 }
 
-.campo-campo input {
+.form-field input {
     width: 100%;
     padding: 0.8rem;
     border: 1px solid #ddd;
@@ -467,33 +476,34 @@ a:hover {
     transition: border-color 0.3s ease;
 }
 
-.campo-campo input:focus {
+.form-field input:focus {
     outline: none;
     border-color: #2196F3;
 }
 
-.campo-campo.is-valid input {
+.form-field.is-valid input {
     border-color: #4CAF50;
     background-color: #f8fff8;
 }
 
-.campo-campo.is-invalid input {
+.form-field.is-invalid input {
     border-color: #f44336;
     background-color: #fff8f8;
 }
 
-.mensagem-erro {
+.error-message {
     color: #f44336;
     font-size: 0.875rem;
     margin-top: 0.25rem;
     display: none;
 }
 
-.campo-campo.is-invalid .mensagem-erro {
+.form-field.is-invalid .error-message {
     display: block;
 }
 
-.campo-campo::after {
+/* Ícones de validação */
+.form-field::after {
     position: absolute;
     right: 10px;
     top: 50%;
@@ -504,18 +514,19 @@ a:hover {
     transition: opacity 0.3s ease;
 }
 
-.campo-campo.is-valid::after {
+.form-field.is-valid::after {
     content: "\f00c";
     color: #4CAF50;
     opacity: 1;
 }
 
-.campo-campo.is-invalid::after {
+.form-field.is-invalid::after {
     content: "\f00d";
     color: #f44336;
     opacity: 1;
 }
 
+/* Estilos para campos com erro */
 .campo-invalido {
     border-color: #dc3545 !important;
     background-color: #fff8f8 !important;
@@ -525,7 +536,7 @@ a:hover {
     box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
 }
 
-.mensagem-erro {
+.erro-mensagem {
     color: #dc3545;
     font-size: 0.875rem;
     margin-top: 0.25rem;
@@ -543,11 +554,12 @@ a:hover {
     }
 }
 
-.campo-grupo input:valid:not(.campo-invalido) {
+/* Estilo para campos válidos */
+.form-group input:valid:not(.campo-invalido) {
     border-color: #28a745;
     background-color: #f8fff8;
 }
 
-.campo-grupo input:valid:not(.campo-invalido):focus {
+.form-group input:valid:not(.campo-invalido):focus {
     box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
 } 

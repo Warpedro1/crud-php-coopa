@@ -7,14 +7,14 @@
     <link href="{{ asset('css/formulario.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div class="wrapper">
-        <div class="painel">
-            <div class="painel-topo">
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
                 <h2>Formulário de Cadastro</h2>
             </div>
-            <div class="painel-conteudo">
+            <div class="card-body">
                 @if ($errors->any())
-                    <div class="mensagem mensagem-erro">
+                    <div class="alert alert-danger">
                         <ul>
                             @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>
@@ -26,29 +26,29 @@
                 <form method="POST" action="{{ route('formulario.store') }}">
                     @csrf
                     
-                    <div class="campo-grupo">
+                    <div class="form-group">
                         <label for="nome">Nome</label>
-                        <input type="text" class="campo-entrada" id="nome" name="nome" value="{{ old('nome') }}" required>
+                        <input type="text" id="nome" name="nome" value="{{ old('nome') }}" required>
                     </div>
                     
-                    <div class="campo-grupo">
+                    <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" class="campo-entrada" id="email" name="email" value="{{ old('email') }}" required>
+                        <input type="email" id="email" name="email" value="{{ old('email') }}" required>
                     </div>
                     
-                    <div class="campo-grupo">
+                    <div class="form-group">
                         <label for="telefone">Telefone</label>
-                        <input type="text" class="campo-entrada" id="telefone" name="telefone" value="{{ old('telefone') }}" required>
+                        <input type="text" id="telefone" name="telefone" value="{{ old('telefone') }}" required>
                     </div>
                     
-                    <div class="campo-grupo">
+                    <div class="form-group">
                         <label for="cep">CEP</label>
-                        <input type="text" class="campo-entrada" id="cep" name="cep" value="{{ old('cep') }}" required>
+                        <input type="text" id="cep" name="cep" value="{{ old('cep') }}" required>
                     </div>
                     
-                    <div class="campo-grupo">
+                    <div class="form-group">
                         <label for="estado_civil">Estado Civil</label>
-                        <select class="campo-entrada" id="estado_civil" name="estado_civil" required>
+                        <select id="estado_civil" name="estado_civil" required>
                             <option value="" selected disabled>Selecione...</option>
                             <option value="Solteiro(a)" {{ old('estado_civil') == 'Solteiro(a)' ? 'selected' : '' }}>Solteiro(a)</option>
                             <option value="Casado(a)" {{ old('estado_civil') == 'Casado(a)' ? 'selected' : '' }}>Casado(a)</option>
@@ -57,24 +57,24 @@
                         </select>
                     </div>
                     
-                    <div class="campo-grupo">
+                    <div class="form-group">
                         <label for="time">Time que Torce</label>
-                        <input type="text" class="campo-entrada" id="time" name="time" value="{{ old('time') }}" required>
+                        <input type="text" id="time" name="time" value="{{ old('time') }}" required>
                     </div>
                     
-                    <div class="campo-grupo">
+                    <div class="form-group">
                         <label for="profissao">Profissão</label>
-                        <input type="text" class="campo-entrada" id="profissao" name="profissao" value="{{ old('profissao') }}" required>
+                        <input type="text" id="profissao" name="profissao" value="{{ old('profissao') }}" required>
                     </div>
                     
-                    <div class="campo-grupo">
+                    <div class="form-group">
                         <label for="salario">Salário</label>
-                        <input type="number" class="campo-entrada" step="0.01" id="salario" name="salario" value="{{ old('salario') }}" required>
+                        <input type="number" step="0.01" id="salario" name="salario" value="{{ old('salario') }}" required>
                     </div>
                     
-                    <div class="grupo-botoes">
-                        <button type="submit" class="botao botao-primario">Enviar Cadastro</button>
-                        <a href="{{ route('formulario.show') }}" class="botao botao-secundario">Visualizar Dados</a>
+                    <div class="form-buttons">
+                        <button type="submit" class="btn btn-primary">Enviar Cadastro</button>
+                        <a href="{{ route('formulario.show') }}" class="btn btn-secondary">Visualizar Dados</a>
                     </div>
                 </form>
             </div>

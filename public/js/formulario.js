@@ -1,4 +1,6 @@
+
 let modifiedFields = {};
+
 
 function isValidEmail(email) {
     const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
@@ -42,7 +44,9 @@ function formatCEP(value) {
     return numeros.replace(/^(\d{5})(\d{3}).*/, '$1-$2');
 }
 
+
 function mostrarErro(campo, mensagem) {
+
     const erroAnterior = campo.parentElement.querySelector('.erro-mensagem');
     if (erroAnterior) {
         erroAnterior.remove();
@@ -64,12 +68,15 @@ function removerErro(campo) {
     campo.classList.remove('campo-invalido');
 }
 
+
 document.addEventListener('DOMContentLoaded', function() {
+    
     const editableCells = document.querySelectorAll('.editable');
     editableCells.forEach(cell => {
         const rowId = cell.closest('tr').getAttribute('id').replace('row-', '');
         const field = cell.getAttribute('data-field');
         const originalValue = cell.textContent.trim();
+        
         
         if (!modifiedFields[rowId]) {
             modifiedFields[rowId] = {};
@@ -78,6 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
             original: originalValue,
             current: originalValue
         };
+        
         
         setupEditableCell(cell);
     });
@@ -88,32 +96,37 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+
 function setupEditableCell(cell) {
     const rowId = cell.closest('tr').getAttribute('id').replace('row-', '');
     const field = cell.getAttribute('data-field');
     const type = cell.getAttribute('data-type') || 'text';
     
-    if (type === 'select') {
-        const options = JSON.parse(cell.getAttribute('data-options'));
-        let selectHtml = `<select class="form-select form-select-sm edit-field" data-field="${field}">`;
-        
-        for (const [value, text] of Object.entries(options)) {
+
+        if (type === 'select') {
+            const options = JSON.parse(cell.getAttribute('data-options'));
+            let selectHtml = `<select class="form-select form-select-sm edit-field" data-field="${field}">`;
+            
+            for (const [value, text] of Object.entries(options)) {
             const selected = value === cell.textContent.trim() ? 'selected' : '';
-            selectHtml += `<option value="${value}" ${selected}>${text}</option>`;
-        }
+                selectHtml += `<option value="${value}" ${selected}>${text}</option>`;
+            }
+            
+            selectHtml += '</select>';
+            cell.innerHTML = selectHtml;
         
-        selectHtml += '</select>';
-        cell.innerHTML = selectHtml;
-        
+
         const select = cell.querySelector('select');
         select.addEventListener('change', function() {
             handleFieldChange(rowId, field, this.value);
         });
-    } else {
+        } else {
+
         cell.addEventListener('input', function() {
             let value = this.textContent.trim();
             let isValid = true;
             
+
             switch(field) {
                 case 'email':
                     isValid = isValidEmail(value);
@@ -175,6 +188,7 @@ function handleFieldChange(rowId, field, newValue) {
         cell.classList.remove('modified');
     }
 }
+
 
 function saveAllChanges() {
     const submissionPromises = [];
